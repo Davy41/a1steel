@@ -41,7 +41,7 @@ a { color: inherit; }
 h1, h2, h3, p { margin: 0; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
-.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--gutter); position: relative; }
+.wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 max(var(--gutter), env(safe-area-inset-right)) 0 max(var(--gutter), env(safe-area-inset-left)); position: relative; }
 
 .skip { position: absolute; left: -999px; top: 8px; z-index: 50; background: var(--text); color: var(--bg); padding: 8px 12px; border-radius: var(--r-control); }
 .skip:focus { left: 8px; }
@@ -293,9 +293,17 @@ input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-app
   .calc { padding-top: 80px; }
   .fastbar {
     display: grid; grid-template-columns: 1fr 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
-    background: rgba(21, 24, 27, .96); border-top: 1px solid var(--line-strong);
-    padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); gap: 8px;
+    background: rgb(21, 24, 27); border-top: 1px solid var(--line-strong);
+    padding: 8px max(12px, env(safe-area-inset-right)) max(8px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+    gap: 8px;
+    /* app.js nudges the bar down to the visible bottom edge on browsers whose
+       toolbar shrinks (iOS Safari), and tucks it away while the keyboard is open */
+    transform: translateY(var(--bar-shift, 0px));
+    transition: transform .2s var(--ease);
   }
+  /* solid backing below the bar, so page content can never show through a gap */
+  .fastbar::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 160px; background: rgb(21, 24, 27); }
+  .fastbar.kb { transform: translateY(calc(100% + 200px)); }
   .fastbar a { display: flex; align-items: center; justify-content: center; height: 44px; border-radius: var(--r-control); text-decoration: none; font-weight: 500; font-size: 15px; background: var(--surface); border: 1px solid var(--line-strong); }
   .fastbar a:last-child { background: var(--cobalt); border-color: var(--cobalt); color: #fff; }
   .foot-inner { padding-bottom: 92px; }

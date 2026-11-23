@@ -151,6 +151,26 @@ calc();
   else window.addEventListener('load', () => idle(go), { once: true });
 })();
 
+/* ---------- mobile contact bar: stick to the bottom edge people actually see ---------- */
+(function pinFastbar() {
+  const bar = document.querySelector('.fastbar');
+  const vv = window.visualViewport;
+  if (!bar || !vv) return;
+  const update = () => {
+    // distance between the visible bottom edge and the layout viewport's bottom:
+    // >0 when a toolbar has collapsed, <0 when browser chrome covers the bottom
+    const below = vv.offsetTop + vv.height - window.innerHeight;
+    // a large gap above means the on-screen keyboard is up: tuck the bar away
+    const keyboard = below < -150 && vv.scale <= 1.01;
+    bar.classList.toggle('kb', keyboard);
+    bar.style.setProperty('--bar-shift', (keyboard ? 0 : Math.round(below)) + 'px');
+  };
+  vv.addEventListener('resize', update);
+  vv.addEventListener('scroll', update);
+  window.addEventListener('resize', update);
+  update();
+})();
+
 /* ---------- menu ---------- */
 const menuBtn = document.getElementById('menuBtn');
 const links = document.getElementById('navLinks');
