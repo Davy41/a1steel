@@ -1,0 +1,69 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+.vim/
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+
+# Build and dist directories
+dist/
+build/
+out/
+.next/
+.nuxt/
+*.log
+
+# Claude Code specific
+.claude/
+
+# Cache directories
+.cache/
+*.cache
+
+# Temporary and generated files
+*.tmp
+*.temp
+.temp/
+*.bak
+
+# Python specific (if used)
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+
+# Local testing and development
+local/
+test-results/
+coverage/
+
+# IDE generated files
+.classpath
+.project
+.settings/
+*.iml

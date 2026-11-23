@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A1 Iron & Steel Rwanda</title>
+<meta name="description" content="A1 Iron & Steel Rwanda Limited rolls TMT bars, sections, wire rod and fencing at Musanze Industrial Park.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="preload" as="image" href="img/bundle-poster.webp">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Molten pour: one glowing line drawn down the page as you scroll -->
+<svg class="pour" id="pour" aria-hidden="true">
+  <defs>
+    <linearGradient id="heat" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#FFE7B0"/>
+      <stop offset=".35" stop-color="#FFB547"/>
+      <stop offset="1" stop-color="#E8591A"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+  <path class="pour-halo" id="pourHalo" d=""/>
+  <path class="pour-cool" id="pourCool" d=""/>
+  <path class="pour-core" id="pourCore" d=""/>
+  <path class="pour-flow" id="pourFlow" d=""/>
+</svg>
+
+<header class="nav" id="top">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <img src="img/logo-reversed.png" width="288" height="88" alt="A1 Iron & Steel Rwanda Limited, home">
+    </a>
+    <nav aria-label="Main">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#calculator">Calculator</a></li>
+        <li><a href="#plant">Plant</a></li>
+        <li><a href="#green">Sustainability</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-primary nav-cta" href="#contact">Request a quote</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-place">Musanze Industrial Park, Rwanda</p>
+        <h1>The metal that builds a nation</h1>
+        <p class="lede">TMT bars, structural sections, wire rod and fencing, rolled in Rwanda for the people building its roads, homes and bridges.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Request a quote</a>
+          <a class="btn btn-quiet js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, I'd like a price for:">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+            Chat on WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="hero-stage" id="stage">
+        <img class="stage-poster" id="poster" src="img/bundle-poster.webp" width="1200" height="1080" alt="A bundle of A1 steel products: round pipe, square hollow section, TMT bars, C channel and angle">
+        <canvas id="pipes" role="img" aria-label="A 3D bundle of steel products: round pipe, square hollow section, TMT bars, C channel and angle. Drag or use arrow keys to turn it." hidden></canvas>
+        <div class="tag" id="pipeTag" hidden></div>
+        <p class="stage-hint" id="stageHint" hidden>Drag to turn the bundle. Click a piece to open it in the catalogue.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IS BUYING -->
+  <section class="routes" aria-labelledby="routesTitle">
+    <div class="wrap">
+      <h2 class="visually-hidden" id="routesTitle">Start here</h2>
+      <ul class="route-row">
+        <li>
+          <h3>Building a house</h3>
+          <p>Work out how much rebar your slab, columns or foundation need</p>
+          <a href="#calculator">Open the bar calculator</a>
+        </li>
+        <li>
+          <h3>Engineers</h3>
+          <p>Grades, dimensions and mechanical properties for each product</p>
+          <a class="js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, please send the datasheets for:">Ask for datasheets</a>
+        </li>
+        <li>
+          <h3>Contractors and procurement</h3>
+          <p>Certificates, company documents and supply for public tenders</p>
+          <a href="mailto:marketing@a1steelrwanda.com?subject=Tender%20documents%20request">Request tender documents</a>
+        </li>
+        <li>
+          <h3>Hardware dealers</h3>
+          <p>Stock A1 steel in your district and buy direct from the mill</p>
+          <a href="mailto:marketing@a1steelrwanda.com?subject=Becoming%20an%20A1%20dealer">Become a dealer</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PLANT / CAPACITY + TRUST -->
+  <section class="plant" id="plant">
+    <div class="wrap plant-grid">
+      <div class="capacity">
+        <p class="cap-figure">0.250 MTPA</p>
+        <p class="cap-label">Installed steel capacity, spread across six mills on one site</p>
+      </div>
+      <ol class="mills" aria-label="Mills at the Musanze plant, in production order">
+        <li><span class="mill-step">Melt</span>Steel melt shop</li>
+        <li><span class="mill-step">Roll</span>TMT bar mill</li>
+        <li><span class="mill-step">Roll</span>Strip mill</li>
+        <li><span class="mill-step">Roll</span>Medium and light structural mill</li>
+        <li><span class="mill-step">Draw</span>Wire rod mill</li>
+        <li><span class="mill-step">Weld</span>ERW pipe plant</li>
+      </ol>
+    </div>
+    <!-- CONFIRM BEFORE LAUNCH: certification status and document availability -->
+    <div class="wrap">
+      <ul class="trust" aria-label="Standards and documents">
+        <li>
+          <svg class="seal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M13 20.5l4.5 4.5L27 15.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><h3>RSB S-Mark</h3><p>Certified by the Rwanda Standards Board</p></div>
+          <a href="mailto:marketing@a1steelrwanda.com?subject=S-Mark%20certificate%20copy">Get a copy</a>
+        </li>
+        <li>
+          <svg class="seal" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="16" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="20" y="24" text-anchor="middle" font-size="11" font-family="Archivo" fill="currentColor">500</text></svg>
+          <div><h3>500 MPa rebar</h3><p>TMT bars meet the EAC minimum yield strength</p></div>
+          <a class="js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, please send the TMT bar datasheet.">Datasheet</a>
+        </li>
+        <li>
+          <svg class="seal" viewBox="0 0 40 40" aria-hidden="true"><rect x="10" y="7" width="20" height="26" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M14 14h12M14 19h12M14 24h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div><h3>Mill test certificate</h3><p>Chemistry and strength results for each heat</p></div>
+          <a href="mailto:marketing@a1steelrwanda.com?subject=Sample%20mill%20test%20certificate">See a sample</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section class="calc" id="calculator" aria-labelledby="calcTitle">
+    <div class="wrap calc-grid">
+      <div>
+        <h2 id="calcTitle">How much rebar do you need?</h2>
+        <p class="calc-intro">Pick a bar size and how many bars you need. We'll give you the weight to order, using the standard weight of steel per metre (d² ÷ 162).</p>
+      </div>
+      <form class="calc-box" id="calcForm" aria-describedby="calcNote">
+        <div class="calc-fields">
+          <div class="field">
+            <label for="c-dia">Bar diameter</label>
+            <select id="c-dia">
+              <option value="8">8 mm</option><option value="10">10 mm</option><option value="12" selected>12 mm</option>
+              <option value="16">16 mm</option><option value="20">20 mm</option><option value="25">25 mm</option><option value="32">32 mm</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="c-len">Bar length</label>
+            <div class="unit"><input id="c-len" type="number" inputmode="decimal" min="1" max="18" step="0.5" value="12"><span>m</span></div>
+          </div>
+          <div class="field">
+            <label for="c-qty">Number of bars</label>
+            <input id="c-qty" type="number" inputmode="numeric" min="1" max="100000" step="1" value="100">
+          </div>
+        </div>
+        <dl class="calc-out" aria-live="polite">
+          <div class="out-main"><dt>Total weight</dt><dd><span id="o-total">1,065</span> kg</dd></div>
+          <div><dt>Per bar</dt><dd><span id="o-bar">10.65</span> kg</dd></div>
+          <div><dt>Per metre</dt><dd><span id="o-m">0.888</span> kg</dd></div>
+          <div><dt>Bars per tonne</dt><dd><span id="o-tonne">94</span></dd></div>
+        </dl>
+        <div class="calc-foot">
+          <a class="btn btn-primary" id="calcWa" href="#contact">Get a price for this order</a>
+          <p id="calcNote">Nominal weights. Your engineer's bar schedule is the final word.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products" aria-labelledby="productsTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="productsTitle">Products</h2>
+        <p>From long products to flat strip. Choose one to see it.</p>
+      </div>
+      <div class="catalogue">
+        <ul class="prod-list" id="prodList" role="listbox" aria-label="Products"></ul>
+        <figure class="prod-view" id="prodView" aria-live="polite">
+          <div class="prod-img"><img id="prodImg" src="img/products_tmt-bars.jpg" alt="TMT Bars"></div>
+          <figcaption>
+            <h3 id="prodName">TMT Bars</h3>
+            <p id="prodDesc"></p>
+            <p class="prod-meta">Price on request. We reply within 24 hours.</p>
+            <div class="prod-actions">
+              <a class="btn btn-primary" id="prodPrice" href="#contact">Get today's price</a>
+              <a class="btn btn-quiet" id="prodSheet" href="#contact">Datasheet</a>
+            </div>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / BOARD -->
+  <section class="board">
+    <div class="wrap board-grid">
+      <img class="board-img" src="img/homepage_our-product.jpg" alt="Stacks of rolled steel sections in a stockyard" loading="lazy">
+      <blockquote>
+        <p>We view steel as more than a material. It is the backbone of progress and the foundation of enduring infrastructure.</p>
+        <footer>Board of Directors, A1 Iron &amp; Steel Rwanda Limited</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- GREEN -->
+  <section class="green" id="green" aria-labelledby="greenTitle">
+    <div class="wrap green-grid">
+      <div>
+        <h2 id="greenTitle">100,000 trees at the plant</h2>
+        <p>Our planting target for the Musanze facility, to offset the carbon of making steel and leave the site greener than we found it.</p>
+      </div>
+      <ul class="green-points">
+        <li><h3>Carbon offset</h3><p>Reforestation around the plant to reduce our footprint</p></li>
+        <li><h3>Cleaner production</h3><p>Efficiency built into how each mill runs</p></li>
+        <li><h3>Local investment</h3><p>Infrastructure, education, health, water and sanitation where we operate</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- MEDIA -->
+  <section class="media" id="media" aria-labelledby="mediaTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="mediaTitle">At the plant</h2>
+        <p>Visits, openings and community days</p>
+      </div>
+      <ul class="media-row">
+        <li><img src="img/media_prime-minister-visit_1.jpeg" alt="" loading="lazy"><h3>Prime Minister visit</h3><p>2025</p></li>
+        <li><img src="img/media_opening-ceremony_2.jpeg" alt="" loading="lazy"><h3>Opening ceremony</h3><p>2025</p></li>
+        <li><img src="img/media_cabinet-visit_1.jpeg" alt="" loading="lazy"><h3>Cabinet visit</h3><p>2026</p></li>
+        <li><img src="img/media_csr-event-school_1.jpeg" alt="" loading="lazy"><h3>Supporting a local school</h3><p>2026</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <h2 id="contactTitle">Request a quote</h2>
+        <p>Tell us the product, size and tonnage. We reply within 24 hours.</p>
+        <div class="contact-fast">
+          <a class="btn btn-quiet js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, I'd like a price for:">Chat on WhatsApp</a>
+          <a class="btn btn-quiet js-tel" href="#contact">Call sales</a>
+        </div>
+        <dl>
+          <div><dt>Sales</dt><dd><a href="mailto:marketing@a1steelrwanda.com">marketing@a1steelrwanda.com</a></dd></div>
+          <div><dt>General</dt><dd><a href="mailto:a1steelrwanda@gmail.com">a1steelrwanda@gmail.com</a></dd></div>
+          <div><dt>Careers</dt><dd><a href="mailto:hr@a1steelrwanda.com">hr@a1steelrwanda.com</a></dd></div>
+          <div><dt>Office</dt><dd>2nd floor, BPR Tower, Nyarugenge, Kigali<br>PO Box 6682, Kigali</dd></div>
+          <div><dt>Plant</dt><dd>Musanze Industrial Park, Kimonyi sector,<br>Buramira cell, Musanze</dd></div>
+        </dl>
+      </div>
+      <form class="quote" id="quote" novalidate>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+        <div class="field"><label for="f-product">Product</label><select id="f-product" name="product"></select></div>
+        <div class="field field-wide"><label for="f-msg">Sizes and quantity</label><textarea id="f-msg" name="message" rows="4" placeholder="For example: 12 mm TMT, 40 tonnes, delivery to Kigali" required></textarea></div>
+        <div class="field-wide form-foot">
+          <button class="btn btn-primary" type="submit">Send request</button>
+          <p class="form-status" id="formStatus" role="status"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- Footer: a plate of steel. The pour line heats it when it arrives, then it cools. -->
+<footer class="foot" id="foot">
+  <div class="foot-heat" aria-hidden="true"></div>
+  <div class="foot-inner wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <img src="img/logo-reversed.png" width="288" height="88" alt="A1 Iron &amp; Steel Rwanda Limited">
+        <p>Long and flat steel, melted and rolled at Musanze Industrial Park for builders across Rwanda and the region.</p>
+        <div class="foot-cta">
+          <a class="btn btn-primary" href="#contact">Request a quote</a>
+          <a class="btn btn-quiet js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, I'd like a price for:">Chat on WhatsApp</a>
+        </div>
+      </div>
+      <nav class="foot-cols" aria-label="Footer">
+        <div>
+          <h2>Products</h2>
+          <ul>
+            <li><a href="#products" data-product="tmt">TMT bars</a></li>
+            <li><a href="#products" data-product="hollow">Hollow sections</a></li>
+            <li><a href="#products" data-product="channel">C channels</a></li>
+            <li><a href="#products" data-product="angle">V angles</a></li>
+            <li><a href="#products" data-product="rod">Wire rod</a></li>
+            <li><a href="#products" data-product="brc">BRC mesh</a></li>
+            <li><a href="#products" data-product="chain">Fencing and wire</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Tools</h2>
+          <ul>
+            <li><a href="#calculator">Rebar calculator</a></li>
+            <li><a class="js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, please send your product datasheets.">Datasheets</a></li>
+            <li><a href="mailto:marketing@a1steelrwanda.com?subject=Tender%20documents%20request">Tender documents</a></li>
+            <li><a href="mailto:marketing@a1steelrwanda.com?subject=Sample%20mill%20test%20certificate">Mill test certificate</a></li>
+            <li><a href="mailto:marketing@a1steelrwanda.com?subject=Becoming%20an%20A1%20dealer">Become a dealer</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Company</h2>
+          <ul>
+            <li><a href="https://a1steelrwanda.com/about/">About us</a></li>
+            <li><a href="#plant">The plant</a></li>
+            <li><a href="#green">Sustainability</a></li>
+            <li><a href="https://a1steelrwanda.com/media/">Media and news</a></li>
+            <li><a href="https://a1steelrwanda.com/career/">Careers</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Visit</h2>
+          <address>
+            <p><strong>Head office</strong>2nd floor, BPR Tower<br>Nyarugenge, Kigali<br>PO Box 6682</p>
+            <p><strong>Plant</strong>Musanze Industrial Park<br>Kimonyi sector, Buramira cell<br>Musanze District</p>
+            <p><a href="mailto:marketing@a1steelrwanda.com">marketing@<wbr>a1steelrwanda.com</a></p>
+          </address>
+        </div>
+      </nav>
+    </div>
+    <p class="foot-mark" aria-hidden="true">A1 · MUSANZE</p>
+    <div class="foot-bottom">
+      <p>© 2026 A1 Iron &amp; Steel Rwanda Limited</p>
+      <p>Made in Rwanda</p>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Phone-first contact bar, mobile only -->
+<div class="fastbar" aria-label="Contact sales">
+  <a class="js-wa" href="#contact" data-msg="Hello A1 Iron & Steel, I'd like a price for:">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8L4 20z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>WhatsApp</a>
+  <a class="js-tel" href="#contact">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h3l1.5 4-2 1.3a10 10 0 0 0 6.2 6.2L16 13.5l4 1.5v3a2 2 0 0 1-2.2 2A16 16 0 0 1 4 6.2 2 2 0 0 1 6 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Call</a>
+  <a href="#contact">Quote</a>
+</div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>
