@@ -23,7 +23,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 body {
@@ -33,7 +33,7 @@ body {
   font: 400 17px/1.55 var(--f-body);
   font-variation-settings: "wdth" 100;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   position: relative;
 }
 img { display: block; max-width: 100%; }
@@ -209,9 +209,9 @@ blockquote footer { margin-top: 24px; color: var(--text-3); font-size: 15px; }
   .nav-links.open a { display: block; padding: 12px 0; font-size: 17px; }
   .nav-cta { display: none; }
   .menu-btn { display: inline-flex; align-items: center; }
-  .hero-grid, .plant-grid, .catalogue, .board-grid, .green-grid, .contact-grid { grid-template-columns: 1fr; }
+  .hero-grid, .plant-grid, .catalogue, .board-grid, .green-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
   .hero-grid { min-height: 0; gap: 8px; }
-  .hero-stage { min-height: 340px; aspect-ratio: 1 / .85; }
+  .hero-stage { min-height: 0; width: 100%; aspect-ratio: 1 / .85; }
   .mills { grid-template-columns: 1fr 1fr; }
   .prod-view { position: static; order: -1; scroll-margin-top: 84px; }
   .media-row { grid-template-columns: 1fr 1fr; }
